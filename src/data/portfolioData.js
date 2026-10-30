@@ -161,7 +161,7 @@ export const projectsData = [
     featured: true,
     imageBg: "from-blue-900/60 to-cyan-900/40",
     badge: "Disaster Tech",
-    tags: ["React", "Spring Boot", "SQL", "Emergency Logistics", "REST API"],
+    tags: ["PHP", "MySQL", "JavaScript", "CSS", "HTML"],
     description: "A mission-critical disaster management and relief coordination system engineered to connect displaced flood victims, regional volunteer units, and humanitarian organizations in real-time. Features automated rescue request dispatching, supply inventory tracking, and geographical hotspot visualization.",
     keyFeatures: [
       "Real-time emergency SOS request logging with geographical coordinates",
@@ -169,8 +169,8 @@ export const projectsData = [
       "Essential supplies (food, medicine, clean water) inventory management system",
       "Secure administrative control room with live situational analytics"
     ],
-    techStack: ["React.js", "Java Spring Boot", "MySQL", "Tailwind CSS", "RESTful Architecture"],
-    githubUrl: "https://github.com/kusalranasinghe/flood-relief-support-center",
+    techStack: ["PHP", "MySQL", "JavaScript", "CSS", "HTML"],
+    githubUrl: "https://github.com/Kusalranasinghe/Flood-Relief-Management-System",
     liveUrl: "#",
     impact: "Provides rapid, transparent aid delivery during extreme monsoonal flood emergencies in Sri Lanka."
   },
@@ -182,7 +182,7 @@ export const projectsData = [
     featured: true,
     imageBg: "from-amber-900/60 to-orange-900/40",
     badge: "Smart Logistics",
-    tags: ["Java", "Spring Boot", "SQL", "React", "Queue Management"],
+    tags: ["Java", "Spring Boot", "Vanilla JavaScript", "HTML", "CSS"],
     description: "An intelligent digital queue and quota management solution designed to tackle fuel distribution crises. FuelGo empowers station managers to monitor live stock levels, issue digital queue tokens, and eliminate hours of congestion through predictable scheduling algorithms.",
     keyFeatures: [
       "Dynamic token generation system based on vehicle category and fuel quota",
@@ -190,20 +190,20 @@ export const projectsData = [
       "Station manager dashboard for real-time bowser delivery tracking",
       "Preventive anti-hoarding verification and vehicle quota enforcement"
     ],
-    techStack: ["Java Spring Boot", "SQL Relational DB", "React Frontend", "Tailwind CSS"],
-    githubUrl: "https://github.com/kusalranasinghe/fuelgo-management",
+    techStack: ["Java 17", "Spring Boot 4", "Spring Web MVC", "Spring Data JPA", "Vanilla JavaScript", "HTML", "CSS", "MySQL"],
+    githubUrl: "https://github.com/Kusalranasinghe/FuelGo",
     liveUrl: "#",
     impact: "Drastically reduced station wait times and promoted transparent, fair fuel rationing."
   },
   {
     id: "cineru-26",
-    title: "Cineru-26",
+    title: "Cinero-26",
     tagline: "Next-gen cinema booking, movie discovery & film community experience",
     category: "Creative Media Platform",
     featured: true,
     imageBg: "from-purple-900/60 to-pink-900/40",
     badge: "Media & Entertainment",
-    tags: ["React", "UI/UX Design", "Figma", "PHP/SQL", "Interactive UI"],
+    tags: ["TypeScript", "React 19", "CSS", "JavaScript", "HTML"],
     description: "A sleek, immersive cinematic portal and reservation system engineered for movie lovers. Cineru-26 combines interactive visual seat selection, synchronized trailer previews, community critique reviews, and an ultra-fast ticketing checkout flow.",
     keyFeatures: [
       "Interactive 2D theater seating map with instant seat reservation lock",
@@ -211,8 +211,8 @@ export const projectsData = [
       "Custom UI/UX system prototyped entirely in Figma before pixel-perfect code implementation",
       "User profile management for ticket history, bookmarks, and favorite genres"
     ],
-    techStack: ["React.js", "Figma Design System", "PHP Backend", "MySQL", "Modern CSS"],
-    githubUrl: "https://github.com/kusalranasinghe/cineru-26",
+    techStack: ["TypeScript", "React 19", "Vite", "CSS", "React Icons", "SweetAlert2"],
+    githubUrl: "https://github.com/KubiForge/Cinero-26",
     liveUrl: "#",
     impact: "Delivered a cinema-going experience with zero friction and high visual polish."
   },

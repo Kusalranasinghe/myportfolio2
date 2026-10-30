@@ -14,6 +14,51 @@ import {
 import confetti from 'canvas-confetti';
 import { personalInfo } from '../data/portfolioData';
 
+function HeroProfile() {
+  return (
+    <div className="relative w-full max-w-[17rem] sm:max-w-xs">
+      <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-cyan-500/20 via-sky-500/20 to-indigo-500/20 blur-2xl opacity-70 animate-pulse"></div>
+      <div className="relative rounded-3xl p-2.5 bg-gradient-to-b from-cyan-500/30 via-slate-800/50 to-indigo-500/30 border border-white/15 shadow-2xl backdrop-blur-xl">
+        <div className="relative m-1 rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 group">
+          <img
+            src={personalInfo.avatar}
+            alt={personalInfo.name}
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent opacity-60"></div>
+          <div className="absolute bottom-3 left-3 right-3 p-3.5 rounded-xl bg-[#090d1a]/90 backdrop-blur-md border border-white/10 shadow-xl">
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="text-sm font-bold text-white flex items-center gap-1.5">
+                  Kusal Ranasinghe
+                  <CheckCircle2 size={14} className="text-cyan-400" />
+                </h4>
+                <p className="text-[11px] text-cyan-300 font-mono">Full-Stack Software Engineer</p>
+              </div>
+              <div className="text-right">
+                <span className="inline-block text-[10px] font-semibold text-indigo-300 uppercase tracking-wider bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-700/50">
+                  Kubi Forge
+                </span>
+                <p className="text-[10px] text-slate-400 mt-0.5">Co-Founder & Dev</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="hidden sm:flex absolute -top-4 -right-4 bg-[#0c1222]/95 border border-cyan-500/30 rounded-2xl p-3 shadow-xl backdrop-blur-md items-center gap-3 animate-float-reverse">
+        <div className="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400">
+          <Cpu size={18} />
+        </div>
+        <div>
+          <div className="text-[10px] uppercase tracking-wider font-semibold text-slate-400">University</div>
+          <div className="text-xs font-bold text-cyan-300">Sri Jayewardenepura</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Hero({ onOpenTerminal, onTriggerToast }) {
   const [roleIndex, setRoleIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
@@ -104,6 +149,10 @@ export default function Hero({ onOpenTerminal, onTriggerToast }) {
               </span>
             </h1>
 
+            <div className="w-full flex justify-center mb-8 lg:hidden">
+              <HeroProfile />
+            </div>
+
             {/* Dynamic Rotating Roles */}
             <div className="h-12 sm:h-14 flex items-center mb-6">
               <span className="text-lg sm:text-2xl font-semibold text-slate-300 font-mono flex items-center">
@@ -172,63 +221,9 @@ export default function Hero({ onOpenTerminal, onTriggerToast }) {
           </div>
 
           {/* Right Column: Hero Profile Image in High-Tech Frame */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-xs sm:max-w-sm">
-              
-              {/* Outer Decorative Glow Rings */}
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-cyan-500/20 via-sky-500/20 to-indigo-500/20 blur-2xl opacity-70 animate-pulse"></div>
-
-              {/* Main Card Frame */}
-              <div className="relative rounded-3xl p-2.5 bg-gradient-to-b from-cyan-500/30 via-slate-800/50 to-indigo-500/30 border border-white/15 shadow-2xl backdrop-blur-xl">
-                
-                {/* Photo Container */}
-                <div className="relative m-1 rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 group">
-                  <img
-                    src={personalInfo.avatar}
-                    alt={personalInfo.name}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                    loading="eager"
-                  />
-                  
-                  {/* Subtle Gradient Overlay at bottom of image */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent opacity-60"></div>
-
-                  {/* Bottom Floating Card */}
-                  <div className="absolute bottom-3 left-3 right-3 p-3.5 rounded-xl bg-[#090d1a]/90 backdrop-blur-md border border-white/10 shadow-xl">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h4 className="text-sm font-bold text-white flex items-center gap-1.5">
-                          Kusal Ranasinghe
-                          <CheckCircle2 size={14} className="text-cyan-400" />
-                        </h4>
-                        <p className="text-[11px] text-cyan-300 font-mono">Full-Stack Software Engineer</p>
-                      </div>
-                      <div className="text-right">
-                        <span className="inline-block text-[10px] font-semibold text-indigo-300 uppercase tracking-wider bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-700/50">
-                          Kubi Forge
-                        </span>
-                        <p className="text-[10px] text-slate-400 mt-0.5">Co-Founder & Dev</p>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-
-              {/* Floating Stat Card: University */}
-              <div className="hidden sm:flex absolute -top-4 -right-4 bg-[#0c1222]/95 border border-cyan-500/30 rounded-2xl p-3 shadow-xl backdrop-blur-md items-center gap-3 animate-float-reverse">
-                <div className="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400">
-                  <Cpu size={18} />
-                </div>
-                <div>
-                  <div className="text-[10px] uppercase tracking-wider font-semibold text-slate-400">University</div>
-                  <div className="text-xs font-bold text-cyan-300">Sri Jayewardenepura</div>
-                </div>
-              </div>
-
+            <div className="hidden lg:col-span-5 lg:flex lg:justify-end">
+              <HeroProfile />
             </div>
-          </div>
 
         </div>
 

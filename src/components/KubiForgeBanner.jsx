@@ -75,7 +75,7 @@ export default function KubiForgeBanner() {
                   </a>
 
                   <a
-                    href={`mailto:${startupData.email}?subject=Kubi%20Forge%20Partnership%20Inquiry`}
+                    href="mailto:kubiforge@gmail.com?subject=Kubi%20Forge%20Partnership%20Inquiry"
                     className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-xs sm:text-sm text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
                   >
                     <span>Email Kubi Forge</span>

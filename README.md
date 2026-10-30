@@ -1,6 +1,6 @@
-# Kusal Ranasinghe - Advanced Personal Portfolio
+# Kusal Ranasinghe - Personal Portfolio
 
-A modern, high-performance personal portfolio website built for **Kusal Ranasinghe** (Dananjaya Kusal), BSc Computer Science Undergraduate at the University of Sri Jayewardenepura (USJ) and Founder of **Kubi Forge**.
+A modern, high-performance personal portfolio website built for **Kusal Ranasinghe** , BSc Computer Science Undergraduate at the University of Sri Jayewardenepura (USJ) and Founder of **Kubi Forge**.
 
 ---
 
@@ -25,62 +25,3 @@ A modern, high-performance personal portfolio website built for **Kusal Ranasing
   - Direct email (`dananjayakusal39@gmail.com`)
   - Interactive contact form with confetti & toast notifications.
 
----
-
-## 🚀 Getting Started
-
-### 1. Install Dependencies
-```bash
-npm install
-```
-
-### 2. Run Locally in Development Mode
-```bash
-npm run dev
-```
-Open your browser at `http://localhost:3000` (or the port displayed in your terminal).
-
-### 3. Build for Production
-```bash
-npm run build
-```
-Creates an optimized production bundle in the `dist/` directory.
-
-### 4. Preview Production Build
-```bash
-npm run preview
-```
-
----
-
-## ⚙️ How to Update Data
-
-All portfolio information is centralized in:
-[`src/data/portfolioData.js`](src/data/portfolioData.js)
-
-You can easily modify:
-- Contact information (LinkedIn URL, GitHub URL, phone numbers)
-- Add new projects with custom tags and descriptions
-- Add new skills or certifications
-- Update education milestones
-
----
-
-## 🚀 Free Deployment Guide
-
-### Deploying to Vercel (Recommended)
-1. Push this project to your GitHub account:
-   ```bash
-   git add .
-   git commit -m "Initial portfolio commit"
-   git branch -M main
-   git remote add origin https://github.com/your-username/myportfolio.git
-   git push -u origin main
-   ```
-2. Go to [vercel.com](https://vercel.com) and click **"Add New Project"**.
-3. Import your repository and click **Deploy**.
-4. Your portfolio will be live worldwide on a custom `.vercel.app` URL with automatic SSL!
-
----
-
-Created with ❤️ by **Kusal Ranasinghe** & **Kubi Forge**.

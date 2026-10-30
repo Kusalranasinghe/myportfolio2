@@ -106,19 +106,6 @@ export default function Hero({ onOpenTerminal, onTriggerToast }) {
     }, 400);
   };
 
-  const handleDownloadCV = () => {
-    confetti({
-      particleCount: 60,
-      spread: 60,
-      origin: { y: 0.7 }
-    });
-    if (onTriggerToast) {
-      onTriggerToast("CV overview prepared! Reaching out directly is fastest.");
-    }
-    const el = document.getElementById('contact');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
       {/* Background ambient glowing orbs */}
@@ -194,6 +181,15 @@ export default function Hero({ onOpenTerminal, onTriggerToast }) {
                 <Terminal size={14} className="text-cyan-400" />
                 <span>Interactive CLI</span>
               </button>
+
+              <a
+                href="/assets/Kusal_Ranasinghe_CV.docx"
+                download="Kusal_Ranasinghe_CV.docx"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl font-mono text-xs text-slate-300 hover:text-cyan-300 bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
+              >
+                <Download size={14} className="text-cyan-400" />
+                <span>Download CV</span>
+              </a>
             </div>
 
             {/* Location & Quick Contact Badges */}

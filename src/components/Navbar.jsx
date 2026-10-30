@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Terminal, MessageSquare, Sparkles, ExternalLink, GraduationCap, Briefcase, Code, User, Rocket } from 'lucide-react';
+import { Menu, X, Terminal, MessageSquare, Sparkles, ExternalLink, GraduationCap, Briefcase, Code, User, Rocket, Sun, Moon } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
-export default function Navbar({ onOpenTerminal }) {
+export default function Navbar({ onOpenTerminal, theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -48,6 +48,17 @@ export default function Navbar({ onOpenTerminal }) {
       target.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const themeToggle = (
+    <button
+      onClick={onToggleTheme}
+      className="p-2 rounded-lg text-slate-300 hover:text-cyan-400 bg-white/5 border border-white/10 transition-colors"
+      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+      title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+    >
+      {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+    </button>
+  );
 
   return (
     <nav
@@ -105,6 +116,7 @@ export default function Navbar({ onOpenTerminal }) {
 
         {/* Right CTA Actions */}
         <div className="hidden lg:flex items-center gap-3">
+          {themeToggle}
           {/* CLI Terminal Trigger */}
           <button
             onClick={onOpenTerminal}
@@ -129,7 +141,11 @@ export default function Navbar({ onOpenTerminal }) {
         </div>
 
         {/* Mobile Menu Button */}
+        <div className="hidden md:flex lg:hidden items-center">
+          {themeToggle}
+        </div>
         <div className="flex md:hidden items-center gap-2">
+          {themeToggle}
           <button
             onClick={onOpenTerminal}
             className="p-2 rounded-lg text-cyan-300 bg-cyan-950/40 border border-cyan-800/60"

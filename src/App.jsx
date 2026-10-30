@@ -15,6 +15,15 @@ import { personalInfo } from './data/portfolioData';
 export default function App() {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
+  const [theme, setTheme] = useState(() => (
+    window.localStorage.getItem('portfolio-theme') === 'light' ? 'light' : 'dark'
+  ));
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    window.localStorage.setItem('portfolio-theme', theme);
+  }, [theme]);
 
   const showToast = (msg) => {
     setToastMessage(msg);
@@ -36,7 +45,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#050811] text-slate-100 relative selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className={`min-h-screen bg-[#050811] text-slate-100 relative selection:bg-cyan-500/30 selection:text-cyan-200 ${theme === 'light' ? 'light-theme' : ''}`}>
       
       {/* Background Interactive Mesh & Pattern */}
       <div className="fixed inset-0 bg-grid-pattern opacity-60 pointer-events-none" />
@@ -57,7 +66,11 @@ export default function App() {
       )}
 
       {/* Navigation */}
-      <Navbar onOpenTerminal={() => setIsTerminalOpen(true)} />
+      <Navbar
+        onOpenTerminal={() => setIsTerminalOpen(true)}
+        theme={theme}
+        onToggleTheme={() => setTheme((currentTheme) => currentTheme === 'dark' ? 'light' : 'dark')}
+      />
 
       {/* Main Content Sections */}
       <main className="relative z-10">

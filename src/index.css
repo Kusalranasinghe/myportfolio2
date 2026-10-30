@@ -12,6 +12,7 @@
     background-color: #050811;
     color: #e2e8f0;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   /* Custom scrollbar */
@@ -76,4 +77,171 @@
     mask-composite: exclude;
     pointer-events: none;
   }
+}
+
+html[data-theme='light'] body {
+  background-color: #f4f7fb;
+  color: #172033;
+}
+
+.light-theme {
+  --light-ink: #172033;
+  --light-muted: #526176;
+  --light-surface: #ffffff;
+  --light-border: rgb(71 85 105 / 14%);
+  color: #172033;
+  color-scheme: light;
+  background-color: #f4f7fb !important;
+}
+
+.light-theme [class*="bg-[#"],
+.light-theme [class*="bg-slate-950"],
+.light-theme [class*="bg-slate-900"] {
+  background-color: var(--light-surface) !important;
+}
+
+.light-theme [class*="bg-black/"] {
+  background-color: rgb(226 232 240 / 78%) !important;
+}
+
+.light-theme [class*="bg-cyan-950"],
+.light-theme [class*="bg-cyan-900"] {
+  background-color: #e6f7fb !important;
+}
+
+.light-theme [class*="bg-indigo-950"],
+.light-theme [class*="bg-indigo-900"],
+.light-theme [class*="bg-blue-950"],
+.light-theme [class*="bg-blue-900"] {
+  background-color: #edf2ff !important;
+}
+
+.light-theme [class*="bg-purple-950"],
+.light-theme [class*="bg-purple-900"],
+.light-theme [class*="bg-violet-950"],
+.light-theme [class*="bg-violet-900"] {
+  background-color: #f3edff !important;
+}
+
+.light-theme [class*="bg-emerald-950"],
+.light-theme [class*="bg-emerald-900"] {
+  background-color: #e9f8f0 !important;
+}
+
+.light-theme [class*="bg-white/"] {
+  background-color: rgb(71 85 105 / 5%) !important;
+}
+
+.light-theme [class*="border-white/"] {
+  border-color: var(--light-border) !important;
+}
+
+.light-theme [class*="text-slate-100"],
+.light-theme [class*="text-slate-200"],
+.light-theme [class*="text-slate-300"],
+.light-theme [class~="text-white"] {
+  color: var(--light-ink) !important;
+}
+
+.light-theme [class*="text-slate-400"],
+.light-theme [class*="text-slate-500"] {
+  color: var(--light-muted) !important;
+}
+
+.light-theme [class*="text-cyan-300"]:not([class*="text-transparent"]),
+.light-theme [class*="text-cyan-400"]:not([class*="text-transparent"]),
+.light-theme [class*="text-sky-300"]:not([class*="text-transparent"]),
+.light-theme [class*="text-sky-400"]:not([class*="text-transparent"]) {
+  color: #087c91 !important;
+}
+
+.light-theme [class*="text-indigo-300"]:not([class*="text-transparent"]),
+.light-theme [class*="text-indigo-400"]:not([class*="text-transparent"]),
+.light-theme [class*="text-violet-300"]:not([class*="text-transparent"]),
+.light-theme [class*="text-violet-400"]:not([class*="text-transparent"]),
+.light-theme [class*="text-purple-300"]:not([class*="text-transparent"]),
+.light-theme [class*="text-purple-400"]:not([class*="text-transparent"]) {
+  color: #5943b5 !important;
+}
+
+.light-theme [class*="text-emerald-300"]:not([class*="text-transparent"]),
+.light-theme [class*="text-emerald-400"]:not([class*="text-transparent"]) {
+  color: #087b55 !important;
+}
+
+.light-theme [class*="text-blue-300"]:not([class*="text-transparent"]),
+.light-theme [class*="text-blue-400"]:not([class*="text-transparent"]) {
+  color: #2459b3 !important;
+}
+
+.light-theme [class*="text-amber-300"]:not([class*="text-transparent"]),
+.light-theme [class*="text-amber-400"]:not([class*="text-transparent"]),
+.light-theme [class*="text-yellow-300"]:not([class*="text-transparent"]),
+.light-theme [class*="text-yellow-400"]:not([class*="text-transparent"]) {
+  color: #9a5b00 !important;
+}
+
+.light-theme [class*="text-rose-300"]:not([class*="text-transparent"]),
+.light-theme [class*="text-rose-400"]:not([class*="text-transparent"]),
+.light-theme [class*="text-pink-300"]:not([class*="text-transparent"]),
+.light-theme [class*="text-pink-400"]:not([class*="text-transparent"]) {
+  color: #b4234a !important;
+}
+
+.light-theme #home h1 span {
+  background-image: linear-gradient(to right, #087c91, #2563a8, #4f46a5);
+  text-shadow: none;
+}
+
+.light-theme .glass-card {
+  background: rgb(255 255 255 / 88%);
+  border-color: var(--light-border);
+  box-shadow: 0 12px 32px rgb(15 23 42 / 6%);
+}
+
+.light-theme .glass-card-hover:hover {
+  border-color: rgb(8 124 145 / 28%);
+  box-shadow: 0 14px 32px rgb(8 124 145 / 10%);
+}
+
+.light-theme nav {
+  background-color: rgb(255 255 255 / 88%);
+  border-color: var(--light-border);
+}
+
+.light-theme #kubi-forge > div > div {
+  background-color: #ffffff !important;
+}
+
+.light-theme #kubi-forge pre {
+  background-color: #f1f5f9 !important;
+  border-color: var(--light-border) !important;
+}
+
+.light-theme #skills [class*="h-1.5"][class*="bg-slate-800"] {
+  background-color: #e2e8f0 !important;
+}
+
+.light-theme #projects .bg-gradient-to-br [class~="text-white"] {
+  color: #ffffff !important;
+}
+
+.light-theme .bg-grid-pattern {
+  opacity: 0.28;
+}
+
+.light-theme .bg-radial-gradient {
+  background: radial-gradient(circle at 50% 0%, rgb(14 165 233 / 8%) 0%, transparent 65%);
+}
+
+html[data-theme='light'] ::-webkit-scrollbar-track {
+  background: #f4f7fb;
+}
+
+html[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+html[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }

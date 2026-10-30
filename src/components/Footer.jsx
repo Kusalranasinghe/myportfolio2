@@ -29,7 +29,7 @@ export default function Footer() {
             </div>
 
             <p className="text-slate-400 text-sm max-w-md leading-relaxed">
-              BSc Computer Science Undergraduate at University of Sri Jayewardenepura. Founder of Kubi Forge. Dedicated to engineering robust full-stack software systems and intuitive digital platforms.
+              BSc Computer Science Undergraduate at University of Sri Jayewardenepura. Co-Founder of Kubi Forge. Dedicated to engineering robust full-stack software systems and intuitive digital platforms.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -96,12 +96,8 @@ export default function Footer() {
                 <span className="text-cyan-400">BSc Computer Science UG (2025-Pres)</span>
               </div>
               <div className="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                <span className="font-semibold text-white block">IMBS Green Campus</span>
-                <span className="text-emerald-400">Diploma in IT (GPA 3.54)</span>
-              </div>
-              <div className="p-2.5 rounded-xl bg-white/5 border border-white/5">
                 <span className="font-semibold text-white block">Kubi Forge</span>
-                <span className="text-indigo-300">Founder & Lead Software Architect</span>
+                <span className="text-indigo-300">Co-Founder & Lead Software Architect</span>
               </div>
             </div>
           </div>

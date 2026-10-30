@@ -7,6 +7,7 @@ import {
   ArrowRight, 
   CheckCircle, 
   ExternalLink,
+  Github,
   ShieldCheck,
   Zap,
   MessageSquare
@@ -74,11 +75,31 @@ export default function KubiForgeBanner() {
                   </a>
 
                   <a
-                    href={`mailto:${personalInfo.email}?subject=Kubi%20Forge%20Partnership%20Inquiry`}
+                    href={`mailto:${startupData.email}?subject=Kubi%20Forge%20Partnership%20Inquiry`}
                     className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-xs sm:text-sm text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
                   >
-                    <span>Email Founder</span>
+                    <span>Email Kubi Forge</span>
                     <ArrowRight size={14} />
+                  </a>
+
+                  <a
+                    href={startupData.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-xs sm:text-sm text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
+                  >
+                    <span>Visit Website</span>
+                    <ExternalLink size={14} />
+                  </a>
+
+                  <a
+                    href={startupData.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-xs sm:text-sm text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
+                  >
+                    <Github size={14} />
+                    <span>GitHub</span>
                   </a>
                 </div>
 
@@ -102,7 +123,7 @@ export default function KubiForgeBanner() {
                   <pre className="font-mono text-xs text-slate-300 leading-relaxed overflow-x-auto p-3 rounded-xl bg-black/40 border border-white/5">
 {`{
   "organization": "Kubi Forge",
-  "founder": "Kusal Ranasinghe",
+  "co-founder": "Kusal Ranasinghe",
   "status": "Operational & Building",
   "domains": [
     "Enterprise Fullstack",

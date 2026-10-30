@@ -9,7 +9,6 @@ A modern, high-performance personal portfolio website built for **Kusal Ranasing
 - **Hero Showcase**: Features Kusal's graduation photo, typewriter roles, real-time availability indicator, academic credentials, and direct action CTAs.
 - **Academic Timeline**:
   - **University of Sri Jayewardenepura (USJ)** - BSc in Computer Science (2025 - Present) studying Computer Science, Mathematics, & Physics.
-  - **IMBS Green Campus** - Diploma in Information Technology (2024 - 2025) graduated with honors **GPA 3.54**.
   - **Ananda Sastralaya Mathugama** - Collegiate Education (Grade 6 - 13, O/L & A/L).
   - **Kalutara Gnanodaya College** - Primary Education (Grade 1 - 5).
 - **Startup Spotlight - Kubi Forge**: Dedicated feature presentation of Kubi Forge with enterprise service capabilities, tech stack json terminal, and inquiry links.

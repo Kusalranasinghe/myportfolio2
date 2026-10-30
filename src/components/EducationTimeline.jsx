@@ -44,7 +44,7 @@ export default function EducationTimeline() {
             Education & Academic <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-sky-400">Journey</span>
           </h2>
           <p className="mt-4 text-slate-400 max-w-2xl text-base sm:text-lg">
-            From formative school years to graduating with honors at IMBS and reading for BSc in Computer Science at University of Sri Jayewardenepura.
+            From formative school years to reading for BSc in Computer Science at University of Sri Jayewardenepura.
           </p>
         </div>
 

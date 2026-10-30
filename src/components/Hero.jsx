@@ -9,8 +9,7 @@ import {
   MapPin, 
   ExternalLink,
   Code2,
-  Cpu,
-  GraduationCap
+  Cpu
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { personalInfo } from '../data/portfolioData';
@@ -94,7 +93,7 @@ export default function Hero({ onOpenTerminal, onTriggerToast }) {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              <span>BSc Computer Science UG @ University of Sri Jayewardenepura</span>
+              <span>{personalInfo.status}</span>
             </div>
 
             {/* Main Headline */}
@@ -116,10 +115,8 @@ export default function Hero({ onOpenTerminal, onTriggerToast }) {
 
             {/* Sub-description */}
             <p className="text-base sm:text-lg text-slate-300/90 leading-relaxed max-w-2xl mb-8">
-              Undergraduate studying <strong className="text-white">Computer Science, Mathematics, & Physics</strong> at the{' '}
-              <span className="text-cyan-300 font-medium">University of Sri Jayewardenepura</span>. 
-              Founder of <span className="text-indigo-300 font-semibold">Kubi Forge</span>. 
-              Specializing in full-stack architectures (React, Java Spring Boot, SQL), UI/UX craft, and AI-accelerated workflows.
+              Co-Founder of <span className="text-indigo-300 font-semibold">Kubi Forge</span>.
+              {' '}I specialize in full-stack architectures (React, Java Spring Boot, SQL), UI/UX craft, and AI-accelerated workflows.
             </p>
 
             {/* Key Action Buttons */}
@@ -176,7 +173,7 @@ export default function Hero({ onOpenTerminal, onTriggerToast }) {
 
           {/* Right Column: Hero Profile Image in High-Tech Frame */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-sm sm:max-w-md">
+            <div className="relative w-full max-w-xs sm:max-w-sm">
               
               {/* Outer Decorative Glow Rings */}
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-cyan-500/20 via-sky-500/20 to-indigo-500/20 blur-2xl opacity-70 animate-pulse"></div>
@@ -185,7 +182,7 @@ export default function Hero({ onOpenTerminal, onTriggerToast }) {
               <div className="relative rounded-3xl p-2.5 bg-gradient-to-b from-cyan-500/30 via-slate-800/50 to-indigo-500/30 border border-white/15 shadow-2xl backdrop-blur-xl">
                 
                 {/* Photo Container */}
-                <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 group">
+                <div className="relative m-1 rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 group">
                   <img
                     src={personalInfo.avatar}
                     alt={personalInfo.name}
@@ -196,12 +193,6 @@ export default function Hero({ onOpenTerminal, onTriggerToast }) {
                   {/* Subtle Gradient Overlay at bottom of image */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-transparent to-transparent opacity-60"></div>
 
-                  {/* Top Floating Badge */}
-                  <div className="absolute top-3 left-3 bg-[#090d1a]/85 backdrop-blur-md border border-white/15 px-3 py-1.5 rounded-full flex items-center gap-2 shadow-lg">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                    <span className="text-[11px] font-semibold text-slate-200">IMBS Graduate (3.54 GPA)</span>
-                  </div>
-
                   {/* Bottom Floating Card */}
                   <div className="absolute bottom-3 left-3 right-3 p-3.5 rounded-xl bg-[#090d1a]/90 backdrop-blur-md border border-white/10 shadow-xl">
                     <div className="flex items-center justify-between">
@@ -210,30 +201,19 @@ export default function Hero({ onOpenTerminal, onTriggerToast }) {
                           Kusal Ranasinghe
                           <CheckCircle2 size={14} className="text-cyan-400" />
                         </h4>
-                        <p className="text-[11px] text-cyan-300 font-mono">BSc CS Undergraduate @ USJ</p>
+                        <p className="text-[11px] text-cyan-300 font-mono">Full-Stack Software Engineer</p>
                       </div>
                       <div className="text-right">
                         <span className="inline-block text-[10px] font-semibold text-indigo-300 uppercase tracking-wider bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-700/50">
                           Kubi Forge
                         </span>
-                        <p className="text-[10px] text-slate-400 mt-0.5">Founder & Dev</p>
+                        <p className="text-[10px] text-slate-400 mt-0.5">Co-Founder & Dev</p>
                       </div>
                     </div>
                   </div>
 
                 </div>
 
-              </div>
-
-              {/* Floating Stat Card: GPA Distinction */}
-              <div className="hidden sm:flex absolute -bottom-5 -left-6 bg-[#0c1222]/95 border border-emerald-500/30 rounded-2xl p-3.5 shadow-xl backdrop-blur-md items-center gap-3 animate-float">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-                  <GraduationCap size={20} />
-                </div>
-                <div>
-                  <div className="text-xs font-semibold text-slate-400">Diploma in IT</div>
-                  <div className="text-base font-bold text-emerald-300">GPA 3.54 <span className="text-xs font-normal text-emerald-400/80">/ 4.0</span></div>
-                </div>
               </div>
 
               {/* Floating Stat Card: University */}
@@ -253,7 +233,7 @@ export default function Hero({ onOpenTerminal, onTriggerToast }) {
         </div>
 
         {/* Bottom Hero Stats Strip */}
-        <div className="mt-16 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="mt-16 sm:mt-20 grid grid-cols-2 lg:grid-cols-3 gap-4">
           {personalInfo.stats.map((stat, idx) => (
             <div
               key={idx}

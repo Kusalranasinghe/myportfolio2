@@ -1,8 +1,8 @@
 export const personalInfo = {
   name: "Kusal Ranasinghe",
   fullName: "Dananjaya Kusal Ranasinghe",
-  tagline: "Computer Science Undergraduate | Full-Stack Software Engineer | Startup Founder",
-  shortBio: "Undergraduate in Computer Science, Mathematics, & Physics at the University of Sri Jayewardenepura. Founder of Kubi Forge. Passionate about architecting scalable full-stack applications, intelligent AI workflows, and modern digital experiences.",
+  tagline: "Computer Science Undergraduate | Full-Stack Software Engineer | Startup Co-Founder",
+  shortBio: "Undergraduate in Computer Science, Mathematics, & Physics at the University of Sri Jayewardenepura. Co-Founder of Kubi Forge. Passionate about architecting scalable full-stack applications, intelligent AI workflows, and modern digital experiences.",
   avatar: "/assets/kusal-photo.jpg",
   email: "dananjayakusal39@gmail.com",
   phone: "+94 78 799 6831",
@@ -14,17 +14,14 @@ export const personalInfo = {
   status: "Open for Opportunities & Collaborations",
   roles: [
     "Full-Stack Developer",
-    "BSc Computer Science UG @ USJ",
-    "Founder @ Kubi Forge",
+    "Co-Founder @ Kubi Forge",
     "Spring Boot & React Specialist",
     "AI-Augmented Software Engineer",
     "UI/UX Designer (Figma)"
   ],
   stats: [
-    { label: "GPA at IMBS (Diploma)", value: "3.54", suffix: "/ 4.0", highlight: "Distinction" },
-    { label: "Current Degree", value: "USJ", suffix: " '25-Pres", highlight: "BSc Comp Science" },
     { label: "Core Technologies", value: "12+", suffix: " Techs", highlight: "Fullstack" },
-    { label: "Tech Startup", value: "Kubi Forge", suffix: "", highlight: "Founder" },
+    { label: "Tech Startup", value: "Kubi Forge", suffix: "", highlight: "Co-Founder" },
   ]
 };
 
@@ -32,7 +29,7 @@ export const educationData = [
   {
     institution: "University of Sri Jayewardenepura (USJ)",
     shortName: "USJ",
-    degree: "BSc (Hons / General) in Computer Science",
+    degree: "BSc in Computer Science",
     fields: "Computer Science, Mathematics, & Physics",
     period: "2025 - Present",
     status: "Currently Reading (Undergraduate)",
@@ -52,7 +49,7 @@ export const educationData = [
     degree: "Diploma in Information Technology (DIT)",
     fields: "Information Technology & Software Systems",
     period: "2024 - 2025",
-    status: "Graduated with Honors",
+    status: "Graduated",
     location: "Sri Lanka",
     badge: "GPA: 3.54",
     badgeColor: "emerald",
@@ -99,8 +96,11 @@ export const educationData = [
 
 export const startupData = {
   name: "Kubi Forge",
+  email: "kubiforge@gmail.com",
+  githubUrl: "https://github.com/KubiForge",
+  liveUrl: "https://kubiforge.vercel.app",
   tagline: "Pioneering Next-Gen Software Solutions & Digital Craftsmanship",
-  role: "Founder & Lead Software Architect",
+  role: "Co-Founder & Lead Software Architect",
   founded: "Active Venture",
   description: "Kubi Forge is a technology venture and digital solutions organization dedicated to engineering reliable, scalable, and beautifully designed software products. We transform innovative ideas into production-ready platforms using modern web stacks, cloud databases, and AI-accelerated workflows.",
   services: [
@@ -232,16 +232,16 @@ export const projectsData = [
       "High performance, SEO-optimized responsive web architecture"
     ],
     techStack: ["React", "Tailwind CSS", "Serverless / Node", "Figma"],
-    githubUrl: "https://github.com/kusalranasinghe/kubi-forge",
-    liveUrl: "#",
+    githubUrl: startupData.githubUrl,
+    liveUrl: startupData.liveUrl,
     impact: "Serves as the launchpad for innovative software projects created by Kusal and collaborators."
   }
 ];
 
 export const terminalCommands = {
-  help: "Available commands:\n  • about      : Learn about Kusal\n  • edu        : Academic credentials & GPA\n  • skills     : Tech stack overview\n  • projects   : Featured project catalog\n  • startup    : About Kubi Forge\n  • contact    : Reach out via WhatsApp/Email\n  • clear      : Clear the terminal screen\n  • sudo hire  : Special command for recruiters!",
-  about: "Kusal Ranasinghe - Undergraduate at University of Sri Jayewardenepura (USJ) studying Computer Science, Mathematics, & Physics. Diploma in IT graduate from IMBS Green Campus (GPA 3.54). Founder of Kubi Forge.",
-  edu: "1. BSc Computer Science - University of Sri Jayewardenepura (2025 - Present)\n2. Diploma in IT - IMBS Green Campus (2024 - 2025, GPA: 3.54 Distinction)\n3. Ananda Sastralaya Mathugama (Grade 6-13, O/L & A/L)\n4. Kalutara Gnanodaya College (Grade 1-5)",
+  help: "Available commands:\n  • about      : Learn about Kusal\n  • edu        : Academic credentials\n  • skills     : Tech stack overview\n  • projects   : Featured project catalog\n  • startup    : About Kubi Forge\n  • contact    : Reach out via WhatsApp/Email\n  • clear      : Clear the terminal screen\n  • sudo hire  : Special command for recruiters!",
+  about: "Kusal Ranasinghe - Undergraduate at University of Sri Jayewardenepura (USJ) studying Computer Science, Mathematics, & Physics. Co-Founder of Kubi Forge.",
+  edu: "1. BSc Computer Science - University of Sri Jayewardenepura (2025 - Present)\n2. Ananda Sastralaya Mathugama (Grade 6-13, O/L & A/L)\n3. Kalutara Gnanodaya College (Grade 1-5)",
   skills: "Languages: Java, JavaScript, Python, C, C#, PHP, SQL\nFrontend: React, HTML5, CSS3, Tailwind CSS\nBackend: Spring Boot, REST APIs, MySQL\nDesign: Figma (UI/UX)\nAI Tools: Claude, ChatGPT, Gemini, Prompt Engineering",
   projects: "1. Flood Relief Support Center (Emergency logistics & crisis coordination)\n2. FuelGo (Smart fuel queue & quota management system)\n3. Cineru-26 (Cinematic booking and media platform)\n4. Kubi Forge Platform (Startup technology suite)",
   startup: "Kubi Forge - A software venture founded by Kusal Ranasinghe dedicated to building robust digital solutions, enterprise web apps, and AI-accelerated products.",

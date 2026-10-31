@@ -1,148 +1,425 @@
-import React, { useState } from 'react';
-import { 
-  Code, 
-  Layers, 
-  Terminal, 
-  Database, 
-  Sparkles, 
-  Figma, 
-  CheckCircle2, 
-  Cpu, 
-  Server, 
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  Code,
+  Terminal,
+  Database,
+  Sparkles,
+  Figma,
+  Cpu,
+  Server,
   FileCode,
   Layout,
   Atom,
-  Coffee
+  Coffee,
+  Layers,
+  ArrowUpRight,
+  Command,
+  WandSparkles,
+  Workflow,
 } from 'lucide-react';
 import { skillsData } from '../data/portfolioData';
 
+const skillLogos = [
+  { name: 'Git', image: 'git.png', category: 'Version control' },
+  { name: 'HTML5', image: 'html.png', category: 'Markup' },
+  { name: 'Java', image: 'java.png', category: 'Backend' },
+  { name: 'JavaScript', image: 'js.png', category: 'Language' },
+  { name: 'MySQL', image: 'mysql.png', category: 'Database' },
+  { name: 'PHP', image: 'php.png', category: 'Backend' },
+  { name: 'React', image: 'react.png', category: 'Frontend' },
+  { name: 'Spring Boot', image: 'spring-boot-logo.png', category: 'Framework' },
+  { name: 'C', image: 'c.png', category: 'Language' },
+  { name: 'CSS3', image: 'css.png', category: 'Styling' },
+  { name: 'Figma', image: 'figma.png', category: 'Design' },
+  { name: 'Python', image: 'python.png', category: 'Language' },
+];
+
+const aiAssistants = [
+  { name: 'Claude', image: 'claude.png', detail: 'Reasoning & writing' },
+  { name: 'ChatGPT', image: 'chatgpt.jpg', detail: 'Ideas & problem solving' },
+  { name: 'Gemini', image: 'gemini.png', detail: 'Research & exploration' },
+];
+
+const codingEnvironments = [
+  {
+    name: 'Cursor',
+    image: 'cursor.png',
+    label: 'AI CODE EDITOR',
+    description: 'An AI-first editor for moving from a focused code change to a polished implementation.',
+    accent: 'cursor',
+    icon: Command,
+  },
+  {
+    name: 'Antigravity',
+    image: 'antigravity.png',
+    label: 'AGENTIC DEVELOPMENT',
+    description: 'An agent-driven workspace for exploring ideas and coordinating multi-step development.',
+    accent: 'antigravity',
+    icon: WandSparkles,
+  },
+];
+
+const cardLogos = {
+  'Java (Spring Boot)': ['java.png', 'spring-boot-logo.png'],
+  'React.js': ['react.png'],
+  'JavaScript (ES6+)': ['js.png'],
+  'C & C#': ['c.png'],
+  PHP: ['php.png'],
+  'SQL & Databases': ['mysql.png'],
+  'HTML5 & CSS3': ['html.png', 'css.png'],
+  'Figma (UI/UX)': ['figma.png'],
+  Python: ['python.png'],
+  'Claude, ChatGPT, Gemini': ['claude.png', 'chatgpt.jpg', 'gemini.png'],
+};
+
+const iconComponents = {
+  Coffee,
+  Code2: Code,
+  FileCode,
+  Terminal,
+  Cpu,
+  Server,
+  Database,
+  Layout,
+  Figma,
+  Sparkles,
+  Layers,
+  Atom,
+};
+
+function SkillLogo({ image, name, className = '' }) {
+  return (
+    <img
+      src={`/assets/skills/${image}`}
+      alt={name}
+      className={`skills-logo ${className}`}
+      loading="lazy"
+      decoding="async"
+    />
+  );
+}
+
 export default function SkillsSection() {
   const [activeTab, setActiveTab] = useState('all');
+  const sectionRef = useRef(null);
 
   const filteredSkills = activeTab === 'all'
     ? skillsData.items
-    : skillsData.items.filter(s => s.category === activeTab);
+    : skillsData.items.filter((skill) => skill.category === activeTab);
 
-  const getIcon = (iconName) => {
-    switch (iconName) {
-      case 'Coffee': return <Coffee size={22} className="text-amber-400" />;
-      case 'Code2': return <Code size={22} className="text-cyan-400" />;
-      case 'FileCode': return <FileCode size={22} className="text-yellow-400" />;
-      case 'Terminal': return <Terminal size={22} className="text-emerald-400" />;
-      case 'Cpu': return <Cpu size={22} className="text-purple-400" />;
-      case 'Server': return <Server size={22} className="text-indigo-400" />;
-      case 'Database': return <Database size={22} className="text-teal-400" />;
-      case 'Layout': return <Layout size={22} className="text-rose-400" />;
-      case 'Figma': return <Figma size={22} className="text-pink-400" />;
-      case 'Sparkles': return <Sparkles size={22} className="text-amber-300" />;
-      case 'Layers': return <Layers size={22} className="text-sky-400" />;
-      case 'Atom': return <Atom size={22} className="text-violet-400" />;
-      default: return <Code size={22} className="text-cyan-400" />;
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return undefined;
+
+    const revealItems = section.querySelectorAll('.skills-reveal:not(.is-visible)');
+    if (!('IntersectionObserver' in window)) {
+      revealItems.forEach((item) => item.classList.add('is-visible'));
+      return undefined;
     }
-  };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+
+    revealItems.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, [activeTab]);
 
   return (
-    <section id="skills" className="py-24 relative">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/3 w-80 h-80 bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none" />
+    <section id="skills" ref={sectionRef} className="skills-section relative overflow-hidden py-24 sm:py-28">
+      <div className="skills-orb skills-orb-one" aria-hidden="true" />
+      <div className="skills-orb skills-orb-two" aria-hidden="true" />
+      <div className="skills-ambient-grid" aria-hidden="true" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-800/40 text-cyan-400 text-xs font-mono font-medium mb-3">
-            <Code size={13} />
-            <span>TECHNICAL PROFICIENCY</span>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="skills-heading mb-12 grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+          <div>
+            <div className="skills-reveal mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/[0.07] px-3 py-1.5 font-mono text-[11px] font-semibold tracking-[0.18em] text-cyan-300">
+              <span className="skills-status-dot h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_12px_#67e8f9]" />
+              WHAT I BUILD WITH
+              <span className="text-slate-500">/ 01</span>
+            </div>
+            <h2 className="skills-reveal max-w-3xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Good ideas.
+              <br />
+              <span className="text-slate-300">Great tools.</span>{' '}
+              <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-violet-400 bg-clip-text text-transparent">
+                Real impact.
+              </span>
+            </h2>
+            <p className="skills-reveal mt-5 max-w-xl text-sm leading-7 text-slate-400 sm:text-base">
+              From shaping a concept to shipping a full-stack product, here is my creative
+              toolkit for turning ambitious ideas into useful experiences.
+            </p>
+            <div className="skills-reveal mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <div className="flex items-center gap-2 text-xs text-slate-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_#67e8f9]" />
+                {String(skillsData.items.length).padStart(2, '0')} skill areas
+              </div>
+              <span className="hidden h-4 w-px bg-white/10 sm:block" />
+              <div className="flex items-center gap-2 text-xs text-slate-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-violet-300 shadow-[0_0_10px_#c4b5fd]" />
+                {String(skillLogos.length).padStart(2, '0')} technologies
+              </div>
+            </div>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Skills & Modern <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">Tech Stack</span>
-          </h2>
-          <p className="mt-4 text-slate-400 max-w-2xl text-base sm:text-lg">
-            A comprehensive overview of programming languages, enterprise frameworks, database engineering, UI/UX design, and AI tools I leverage to build software.
-          </p>
+
+          <div className="skills-reveal skills-console-wrap">
+            <div className="skills-console-glow" aria-hidden="true" />
+            <div className="skills-console">
+              <div className="skills-console-bar">
+                <span className="skills-console-dot skills-console-dot-red" />
+                <span className="skills-console-dot skills-console-dot-yellow" />
+                <span className="skills-console-dot skills-console-dot-green" />
+                <span className="ml-3 font-mono text-[10px] text-slate-500">kusal@workbench ~ skills</span>
+                <span className="ml-auto font-mono text-[9px] text-slate-600">LIVE PREVIEW</span>
+              </div>
+              <div className="skills-console-body">
+                <div className="skills-console-gutter">01<br />02<br />03<br />04<br />05<br />06</div>
+                <div className="skills-console-code">
+                  <p><span className="console-purple">const</span> <span className="console-cyan">developer</span> = {'{'}</p>
+                  <p className="console-indent"><span className="console-blue">builds</span>: <span className="console-green">'for people'</span>,</p>
+                  <p className="console-indent"><span className="console-blue">stack</span>: [<span className="console-green">'React'</span>, <span className="console-green">'Java'</span>],</p>
+                  <p className="console-indent"><span className="console-blue">mindset</span>: <span className="console-green">'always learning'</span>,</p>
+                  <p className="console-indent"><span className="console-blue">ai</span>: <span className="console-orange">true</span></p>
+                  <p>{'}'}<span className="console-caret" aria-hidden="true" /></p>
+                </div>
+              </div>
+              <div className="skills-console-footer">
+                <span className="flex items-center gap-2"><span className="skills-status-dot h-1.5 w-1.5 rounded-full bg-emerald-400" /> BUILDING SOMETHING GOOD</span>
+                <span>UTF-8 · JSX</span>
+              </div>
+            </div>
+            <div className="skills-float-chip skills-float-chip-react">
+              <SkillLogo image="react.png" name="React" />
+              <span>React</span>
+            </div>
+            <div className="skills-float-chip skills-float-chip-spring">
+              <SkillLogo image="spring-boot-logo.png" name="Spring Boot" />
+              <span>Spring Boot</span>
+            </div>
+          </div>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-          {skillsData.categories.map((cat) => {
-            const isActive = activeTab === cat.id;
+        <div className="skills-reveal skills-logo-rail mb-14 rounded-3xl border border-white/[0.08] bg-slate-950/40 p-4 sm:p-5">
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">
+                Technologies in my workflow
+              </p>
+            </div>
+            <span className="hidden items-center gap-1.5 text-[11px] text-slate-500 sm:inline-flex">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              Always learning
+            </span>
+          </div>
+          <div className="skills-marquee" aria-label="Technology logos">
+            <div className="skills-marquee-track">
+              {[...skillLogos, ...skillLogos].map((logo, index) => (
+                <div
+                  className="skills-logo-chip group"
+                  key={`${logo.name}-${index}`}
+                  title={`${logo.name} · ${logo.category}`}
+                  aria-hidden={index >= skillLogos.length}
+                >
+                  <span className="skills-logo-frame">
+                    <SkillLogo image={logo.image} name={logo.name} />
+                  </span>
+                  <span className="whitespace-nowrap text-xs font-medium text-slate-300">{logo.name}</span>
+                  <ArrowUpRight size={13} className="ml-auto shrink-0 text-slate-600 transition-colors group-hover:text-cyan-300" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="skills-reveal mb-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-300/80">
+              Capability index
+            </p>
+            <p className="mt-1 text-sm text-slate-500">Explore by discipline</p>
+          </div>
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter skills by category">
+            {skillsData.categories.map((category) => {
+              const isActive = activeTab === category.id;
+              const count = category.id === 'all'
+                ? skillsData.items.length
+                : skillsData.items.filter((skill) => skill.category === category.id).length;
+
+              return (
+                <button
+                  key={category.id}
+                  type="button"
+                  onClick={() => setActiveTab(category.id)}
+                  aria-pressed={isActive}
+                  className={`skills-filter ${isActive ? 'skills-filter-active' : ''}`}
+                >
+                  {category.label}
+                  <span className="skills-filter-count">{String(count).padStart(2, '0')}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {filteredSkills.map((skill, index) => {
+            const Icon = iconComponents[skill.icon] || Code;
+            const logos = cardLogos[skill.name] || [];
+
             return (
-              <button
-                key={cat.id}
-                onClick={() => setActiveTab(cat.id)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
-                  isActive
-                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 scale-105'
-                    : 'bg-[#0d1322]/80 text-slate-300 hover:text-white hover:bg-white/10 border border-white/5'
-                }`}
+              <article
+                key={`${activeTab}-${skill.name}`}
+                className="skills-card skills-reveal group"
+                style={{ '--skill-delay': `${index * 45}ms` }}
               >
-                {cat.label}
-              </button>
+                <div className="skills-card-topline" />
+                <div className="skills-card-halo" aria-hidden="true" />
+                <div className="mb-5 flex items-start justify-between gap-4">
+                  <div className="flex min-w-0 items-center gap-3.5">
+                    <div className="skills-card-icon">
+                      <Icon size={20} />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="mb-1 block font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500">
+                        {skillsData.categories.find((category) => category.id === skill.category)?.label}
+                      </span>
+                      <h3 className="truncate text-base font-bold text-white transition-colors group-hover:text-cyan-200">
+                        {skill.name}
+                      </h3>
+                    </div>
+                  </div>
+                  <span className="skills-level">{skill.level}%</span>
+                </div>
+
+                <p className="relative z-[1] min-h-[42px] text-xs leading-5 text-slate-400 sm:text-[13px]">
+                  {skill.desc}
+                </p>
+
+                <div className="relative z-[1] mt-5 flex min-h-9 items-center justify-between gap-3 border-t border-white/[0.07] pt-4">
+                  <div className="flex items-center gap-2">
+                    {logos.length > 0 ? logos.map((image) => (
+                      <span className="skills-card-logo" key={image}>
+                        <SkillLogo image={image} name={image.replace('.png', '')} />
+                      </span>
+                    )) : (
+                      <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">
+                        Applied practice
+                      </span>
+                    )}
+                  </div>
+                  <span className="font-mono text-[10px] text-slate-500">
+                    {String(index + 1).padStart(2, '0')} <span className="text-slate-700">/</span> {String(filteredSkills.length).padStart(2, '0')}
+                  </span>
+                </div>
+                <div className="skills-meter mt-4" role="img" aria-label={`${skill.level}% proficiency`}>
+                  <span style={{ '--meter-level': `${skill.level}%` }} />
+                </div>
+              </article>
             );
           })}
         </div>
 
-        {/* Skills Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSkills.map((skill, index) => (
-            <div
-              key={index}
-              className="glass-card glass-card-hover p-6 rounded-2xl border border-white/10 relative group overflow-hidden"
-            >
-              {/* Subtle accent hover indicator */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
-              <div className="flex items-start justify-between mb-4">
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:scale-110 group-hover:bg-white/10 transition-all">
-                  {getIcon(skill.icon)}
-                </div>
-                <span className="font-mono text-xs font-semibold text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded-full border border-cyan-800/40">
-                  {skill.level}%
-                </span>
-              </div>
-
-              <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
-                {skill.name}
-              </h3>
-              
-              <p className="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed min-h-[36px]">
-                {skill.desc}
-              </p>
-
-              {/* Animated Progress Bar */}
-              <div className="mt-5">
-                <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-indigo-500 transition-all duration-1000 ease-out"
-                    style={{ width: `${skill.level}%` }}
-                  />
-                </div>
-              </div>
-
-            </div>
-          ))}
-        </div>
-
-        {/* AI & Workflow Highlight Banner */}
-        <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-cyan-950/30 to-indigo-950/40 border border-cyan-500/20 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="p-3.5 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/30 text-emerald-300">
-              <Sparkles size={28} />
-            </div>
+        <section className="skills-workbench skills-reveal mt-14" aria-labelledby="workbench-heading">
+          <div className="skills-reveal mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h4 className="text-base sm:text-lg font-bold text-white">
-                AI-Augmented Development Methodology
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-xl">
-                Experienced in leveraging <span className="text-emerald-300 font-semibold">Claude</span>, <span className="text-cyan-300 font-semibold">ChatGPT</span>, and <span className="text-sky-300 font-semibold">Gemini</span> for rapid architectural prototyping, test automation, and building intelligent agent-driven software workflows.
+              <p className="mb-2 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-violet-300">
+                <Workflow size={14} />
+                AI-powered workbench
+              </p>
+              <h3 id="workbench-heading" className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                The tools behind the build.
+              </h3>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+                AI coding environments for creating, paired with AI assistants for thinking through the details.
               </p>
             </div>
+            <span className="w-fit rounded-full border border-violet-300/15 bg-violet-300/[0.06] px-3 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-violet-200">
+              Human-led · AI-assisted
+            </span>
           </div>
-          <div className="flex items-center gap-2 font-mono text-xs text-cyan-300 bg-cyan-900/40 border border-cyan-700/50 px-4 py-2 rounded-xl whitespace-nowrap">
-            <span>Modern Engineering Velocity</span>
-          </div>
-        </div>
 
+          <div className="grid gap-4 lg:grid-cols-[1.35fr_0.85fr]">
+            <div className="grid gap-4 sm:grid-cols-2">
+              {codingEnvironments.map((environment) => {
+                const EnvironmentIcon = environment.icon;
+                return (
+                  <article className={`workbench-tool-card skills-reveal workbench-${environment.accent}`} key={environment.name}>
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="workbench-tool-logo">
+                        <SkillLogo image={environment.image} name={`${environment.name} logo`} />
+                      </span>
+                      <span className="workbench-tool-mark">
+                        <EnvironmentIcon size={16} />
+                      </span>
+                    </div>
+                    <p className="mt-6 font-mono text-[9px] font-semibold tracking-[0.2em] text-slate-400">
+                      {environment.label}
+                    </p>
+                    <h4 className="mt-1 text-xl font-bold text-white">{environment.name}</h4>
+                    <p className="mt-2 text-xs leading-5 text-slate-400">{environment.description}</p>
+                    <div className="workbench-tool-footer">
+                      <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
+                      <span>Creative coding environment</span>
+                      <ArrowUpRight size={14} className="ml-auto" />
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+
+            <aside className="workbench-assistants skills-reveal">
+              <div className="flex items-center gap-3">
+                <div className="grid h-10 w-10 place-items-center rounded-xl border border-emerald-300/15 bg-emerald-300/[0.08] text-emerald-300">
+                  <Sparkles size={19} />
+                </div>
+                <div>
+                  <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-emerald-300/80">
+                    Thinking partners
+                  </p>
+                  <h4 className="mt-0.5 text-sm font-bold text-white">AI assistants</h4>
+                </div>
+              </div>
+              <p className="mt-4 text-xs leading-5 text-slate-400">
+                A flexible set of assistants for brainstorming, research and problem-solving.
+              </p>
+              <div className="mt-4 space-y-2">
+                {aiAssistants.map((assistant) => (
+                  <div className="workbench-assistant-row" key={assistant.name}>
+                    <span className="workbench-assistant-logo">
+                      <SkillLogo image={assistant.image} name={`${assistant.name} logo`} />
+                    </span>
+                    <span className="text-xs font-semibold text-slate-200">{assistant.name}</span>
+                    <span className="ml-auto text-right text-[10px] text-slate-500">{assistant.detail}</span>
+                  </div>
+                ))}
+              </div>
+            </aside>
+          </div>
+          <div className="skills-ai-banner mt-4 flex flex-col gap-4 rounded-2xl border border-emerald-300/15 p-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+            <div className="flex items-center gap-3">
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-emerald-300/20 bg-emerald-300/10 text-emerald-300">
+                <Sparkles size={19} />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-white">AI-augmented, human-led development</h4>
+                <p className="mt-1 text-xs text-slate-400">
+                  Use AI to accelerate exploration; keep engineering judgment in the driver’s seat.
+                </p>
+              </div>
+            </div>
+            <span className="flex w-fit items-center gap-2 rounded-full border border-emerald-300/15 bg-emerald-300/[0.06] px-3 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-emerald-200">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
+              Curiosity → Craft
+            </span>
+          </div>
+        </section>
       </div>
     </section>
   );

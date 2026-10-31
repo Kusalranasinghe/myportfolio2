@@ -708,6 +708,8 @@ html[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
 }
 
 .skills-orb-two {
+  right: 5rem;
+  width: min(22rem, 80vw);
   animation-delay: -7s;
 }
 
@@ -1144,10 +1146,25 @@ html[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
 
 @keyframes skills-orb-drift {
   from {
-    transform: translate3d(-1rem, -1rem, 0) scale(0.94);
+    transform: translate3d(0, -1rem, 0) scale(0.94);
   }
   to {
-    transform: translate3d(2rem, 1.5rem, 0) scale(1.08);
+    transform: translate3d(0, 1.5rem, 0) scale(1.08);
+  }
+}
+
+.skills-status-dot {
+  animation: skills-status-pulse 2.2s ease-out infinite;
+}
+
+@keyframes skills-status-pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgb(52 211 153 / 38%);
+  }
+  50% {
+    opacity: 0.75;
+    box-shadow: 0 0 0 5px rgb(52 211 153 / 0%);
   }
 }
 
@@ -1215,6 +1232,7 @@ html[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
 
 @media (prefers-reduced-motion: reduce) {
   .skills-orb,
+  .skills-status-dot,
   .skills-console-glow,
   .skills-console-code p,
   .console-caret,

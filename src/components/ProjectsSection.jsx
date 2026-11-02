@@ -94,7 +94,7 @@ export default function ProjectsSection() {
                     <img
                       src={project.image}
                       alt={project.imageAlt || `${project.title} project preview`}
-                      className="absolute inset-0 -z-10 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                      className={`absolute inset-0 -z-10 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${project.id === 'fuelgo' ? 'object-[center_20%]' : 'object-center'}`}
                       loading="lazy"
                       decoding="async"
                     />
@@ -214,7 +214,7 @@ export default function ProjectsSection() {
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.imageAlt || `${selectedProject.title} project preview`}
-                  className="max-h-64 w-full object-cover object-center"
+                  className={`max-h-64 w-full object-cover ${selectedProject.id === 'fuelgo' ? 'object-[center_20%]' : 'object-center'}`}
                   loading="lazy"
                   decoding="async"
                 />

@@ -88,7 +88,20 @@ export default function ProjectsSection() {
               className="glass-card glass-card-hover rounded-3xl border border-white/10 overflow-hidden flex flex-col justify-between group"
             >
               {/* Card Header Banner */}
-              <div className={`p-7 sm:p-8 bg-gradient-to-br ${project.imageBg} border-b border-white/5 relative overflow-hidden`}>
+              <div className={`relative isolate flex min-h-64 flex-col justify-between overflow-hidden border-b border-white/5 bg-gradient-to-br ${project.imageBg} p-6 sm:min-h-72 sm:p-8`}>
+                {project.image && (
+                  <>
+                    <img
+                      src={project.image}
+                      alt={project.imageAlt || `${project.title} project preview`}
+                      className="absolute inset-0 -z-10 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="absolute inset-0 -z-10 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/10" />
+                    <div className="absolute inset-0 -z-10 bg-slate-950/10 transition-colors duration-300 group-hover:bg-slate-950/0" />
+                  </>
+                )}
                 <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none" />
 
                 <div className="flex items-center justify-between mb-4 relative z-10">
@@ -195,6 +208,18 @@ export default function ProjectsSection() {
                 </h3>
               </div>
             </div>
+
+            {selectedProject.image && (
+              <div className="mb-6 overflow-hidden rounded-2xl border border-white/10">
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.imageAlt || `${selectedProject.title} project preview`}
+                  className="max-h-64 w-full object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            )}
 
             <p className="text-slate-300 text-sm leading-relaxed mb-6">
               {selectedProject.description}

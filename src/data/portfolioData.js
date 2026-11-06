@@ -202,23 +202,22 @@ export const projectsData = [
   {
     id: "cineru-26",
     title: "Cinero-26",
-    tagline: "Next-gen cinema booking, movie discovery & film community experience",
-    category: "Creative Media Platform",
+    tagline: "Website for the Cinero-26 Inter-University Short Film Competition",
+    category: "Inter-University Short Film Competition",
     featured: true,
     imageBg: "from-purple-900/60 to-pink-900/40",
-    badge: "Media & Entertainment",
+    badge: "Short Film Competition",
     tags: ["TypeScript", "React 19", "CSS", "JavaScript", "HTML"],
-    description: "A sleek, immersive cinematic portal and reservation system engineered for movie lovers. Cineru-26 combines interactive visual seat selection, synchronized trailer previews, community critique reviews, and an ultra-fast ticketing checkout flow.",
+    description: "Cinero-26 is the website created for an inter-university short film competition. The KubiForge team collaborated with the Japura Voice Film Division to bring the competition online with a cinematic, event-focused experience.",
     keyFeatures: [
-      "Interactive 2D theater seating map with instant seat reservation lock",
-      "Rich media showcases with trailers, ratings, cast profiles, and reviews",
-      "Custom UI/UX system prototyped entirely in Figma before pixel-perfect code implementation",
-      "User profile management for ticket history, bookmarks, and favorite genres"
+      "Dedicated online presence for the Cinero-26 inter-university short film competition",
+      "Cinematic visual experience created for a film-focused event",
+      "Built through collaboration between the KubiForge team and Japura Voice Film Division"
     ],
     techStack: ["TypeScript", "React 19", "Vite", "CSS", "React Icons", "SweetAlert2"],
     githubUrl: "https://github.com/KubiForge/Cinero-26",
     liveUrl: "https://www.cinero26.live/",
-    impact: "Delivered a cinema-going experience with zero friction and high visual polish."
+    impact: "Gave the competition a dedicated website through a collaboration between KubiForge and Japura Voice Film Division."
   },
   {
     id: "kubi-forge-core",

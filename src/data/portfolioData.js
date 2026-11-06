@@ -217,7 +217,7 @@ export const projectsData = [
     ],
     techStack: ["TypeScript", "React 19", "Vite", "CSS", "React Icons", "SweetAlert2"],
     githubUrl: "https://github.com/KubiForge/Cinero-26",
-    liveUrl: "#",
+    liveUrl: "https://www.cinero26.live/",
     impact: "Delivered a cinema-going experience with zero friction and high visual polish."
   },
   {

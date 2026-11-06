@@ -17,21 +17,49 @@ import {
   WandSparkles,
   Workflow,
 } from 'lucide-react';
-import { skillsData } from '../data/portfolioData';
+import { personalInfo, skillsData } from '../data/portfolioData';
 
-const skillLogos = [
-  { name: 'Git', image: 'git.png', category: 'Version control' },
-  { name: 'HTML5', image: 'html.png', category: 'Markup' },
-  { name: 'Java', image: 'java.png', category: 'Backend' },
-  { name: 'JavaScript', image: 'js.png', category: 'Language' },
-  { name: 'MySQL', image: 'mysql.png', category: 'Database' },
-  { name: 'PHP', image: 'php.png', category: 'Backend' },
-  { name: 'React', image: 'react.png', category: 'Frontend' },
-  { name: 'Spring Boot', image: 'spring-boot-logo.png', category: 'Framework' },
-  { name: 'C', image: 'c.png', category: 'Language' },
-  { name: 'CSS3', image: 'css.png', category: 'Styling' },
-  { name: 'Figma', image: 'figma.png', category: 'Design' },
-  { name: 'Python', image: 'python.png', category: 'Language' },
+const skillOrbitGroups = [
+  {
+    id: 'languages',
+    label: 'Languages',
+    logos: [
+      { name: 'JavaScript', image: 'js.png' },
+      { name: 'Python', image: 'python.png' },
+      { name: 'C', image: 'c.png' },
+    ],
+  },
+  {
+    id: 'frontend',
+    label: 'Frontend & UI/UX',
+    logos: [
+      { name: 'React', image: 'react.png' },
+      { name: 'HTML5', image: 'html.png' },
+      { name: 'CSS3', image: 'css.png' },
+      { name: 'Figma', image: 'figma.png' },
+    ],
+  },
+  {
+    id: 'backend',
+    label: 'Backend & DB',
+    logos: [
+      { name: 'Java', image: 'java.png' },
+      { name: 'Spring Boot', image: 'spring-boot-logo.png' },
+      { name: 'PHP', image: 'php.png' },
+      { name: 'MySQL', image: 'mysql.png' },
+    ],
+  },
+  {
+    id: 'ai',
+    label: 'AI & Modern Tools',
+    logos: [
+      { name: 'Claude', image: 'claude.png' },
+      { name: 'ChatGPT', image: 'chatgpt.jpg' },
+      { name: 'Gemini', image: 'gemini.png' },
+      { name: 'Cursor', image: 'cursor.png' },
+      { name: 'Antigravity', image: 'antigravity.png' },
+    ],
+  },
 ];
 
 const aiAssistants = [
@@ -102,6 +130,10 @@ function SkillLogo({ image, name, className = '' }) {
 export default function SkillsSection() {
   const [activeTab, setActiveTab] = useState('all');
   const sectionRef = useRef(null);
+  const orbitLogoCount = skillOrbitGroups.reduce((total, group) => total + group.logos.length, 0);
+  const activeOrbitGroups = activeTab === 'all'
+    ? skillOrbitGroups
+    : skillOrbitGroups.filter((group) => group.id === activeTab);
 
   const filteredSkills = activeTab === 'all'
     ? skillsData.items
@@ -164,75 +196,58 @@ export default function SkillsSection() {
               <span className="hidden h-4 w-px bg-white/10 sm:block" />
               <div className="flex items-center gap-2 text-xs text-slate-400">
                 <span className="h-1.5 w-1.5 rounded-full bg-violet-300 shadow-[0_0_10px_#c4b5fd]" />
-                {String(skillLogos.length).padStart(2, '0')} technologies
+                {String(orbitLogoCount).padStart(2, '0')} technologies
               </div>
             </div>
           </div>
 
-          <div className="skills-reveal skills-console-wrap">
-            <div className="skills-console-glow" aria-hidden="true" />
-            <div className="skills-console">
-              <div className="skills-console-bar">
-                <span className="skills-console-dot skills-console-dot-red" />
-                <span className="skills-console-dot skills-console-dot-yellow" />
-                <span className="skills-console-dot skills-console-dot-green" />
-                <span className="ml-3 font-mono text-[10px] text-slate-500">kusal@workbench ~ skills</span>
-                <span className="ml-auto font-mono text-[9px] text-slate-600">LIVE PREVIEW</span>
-              </div>
-              <div className="skills-console-body">
-                <div className="skills-console-gutter">01<br />02<br />03<br />04<br />05<br />06</div>
-                <div className="skills-console-code">
-                  <p><span className="console-purple">const</span> <span className="console-cyan">developer</span> = {'{'}</p>
-                  <p className="console-indent"><span className="console-blue">builds</span>: <span className="console-green">'for people'</span>,</p>
-                  <p className="console-indent"><span className="console-blue">stack</span>: [<span className="console-green">'React'</span>, <span className="console-green">'Java'</span>],</p>
-                  <p className="console-indent"><span className="console-blue">mindset</span>: <span className="console-green">'always learning'</span>,</p>
-                  <p className="console-indent"><span className="console-blue">ai</span>: <span className="console-orange">true</span></p>
-                  <p>{'}'}<span className="console-caret" aria-hidden="true" /></p>
-                </div>
-              </div>
-              <div className="skills-console-footer">
-                <span className="flex items-center gap-2"><span className="skills-status-dot h-1.5 w-1.5 rounded-full bg-emerald-400" /> BUILDING SOMETHING GOOD</span>
-                <span>UTF-8 · JSX</span>
-              </div>
-            </div>
-            <div className="skills-float-chip skills-float-chip-react">
-              <SkillLogo image="react.png" name="React" />
-              <span>React</span>
-            </div>
-            <div className="skills-float-chip skills-float-chip-spring">
-              <SkillLogo image="spring-boot-logo.png" name="Spring Boot" />
-              <span>Spring Boot</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="skills-reveal skills-logo-rail mb-14 rounded-3xl border border-white/[0.08] bg-slate-950/40 p-4 sm:p-5">
-          <div className="mb-4 flex items-center justify-between gap-3">
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">
-                Technologies in my workflow
-              </p>
-            </div>
-            <span className="hidden items-center gap-1.5 text-[11px] text-slate-500 sm:inline-flex">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              Always learning
-            </span>
-          </div>
-          <div className="skills-marquee" aria-label="Technology logos">
-            <div className="skills-marquee-track">
-              {[...skillLogos, ...skillLogos].map((logo, index) => (
+          <div className="skills-reveal skills-orbit-wrap">
+            <div
+              className={`skills-orbit-scene ${activeTab !== 'all' ? 'skills-orbit-scene-filtered' : ''}`}
+              aria-label={`${activeTab === 'all' ? 'All technology categories' : skillsData.categories.find((category) => category.id === activeTab)?.label} orbiting ${personalInfo.name}'s portrait`}
+            >
+              <div className="skills-orbit-glow" aria-hidden="true" />
+              {activeOrbitGroups.map((group, groupIndex) => (
                 <div
-                  className="skills-logo-chip group"
-                  key={`${logo.name}-${index}`}
-                  title={`${logo.name} · ${logo.category}`}
-                  aria-hidden={index >= skillLogos.length}
+                  className={`skills-orbit skills-orbit-${group.id}`}
+                  key={group.id}
+                  aria-hidden="true"
                 >
-                  <span className="skills-logo-frame">
-                    <SkillLogo image={logo.image} name={logo.name} />
-                  </span>
-                  <span className="whitespace-nowrap text-xs font-medium text-slate-300">{logo.name}</span>
-                  <ArrowUpRight size={13} className="ml-auto shrink-0 text-slate-600 transition-colors group-hover:text-cyan-300" />
+                  {group.logos.map((logo, logoIndex) => {
+                    const angle = (360 / group.logos.length) * logoIndex - 90;
+                    return (
+                      <span
+                        className="skills-orbit-logo"
+                        key={logo.name}
+                        title={`${logo.name} · ${group.label}`}
+                        style={{
+                          '--orbit-angle': `${angle}deg`,
+                          '--orbit-radius': `${activeTab === 'all' ? [44, 36, 29, 25][groupIndex] : 36}cqw`,
+                        }}
+                      >
+                        <span className="skills-orbit-logo-tile">
+                          <SkillLogo image={logo.image} name={logo.name} />
+                        </span>
+                      </span>
+                    );
+                  })}
                 </div>
+              ))}
+              <div className="skills-portrait-halo" aria-hidden="true" />
+              <div className="skills-portrait">
+                <img src="/assets/skills-center-photo.jpg" alt={personalInfo.name} />
+              </div>
+              <div className="skills-portrait-caption">
+                <span className="skills-status-dot" />
+                <span>{personalInfo.name}</span>
+              </div>
+            </div>
+            <div className="skills-orbit-legend" aria-label="Technology categories">
+              {activeOrbitGroups.map((group) => (
+                <span className={`skills-orbit-legend-item skills-orbit-legend-${group.id}`} key={group.id}>
+                  <span className="skills-orbit-legend-dot" />
+                  {group.label}
+                </span>
               ))}
             </div>
           </div>
@@ -268,7 +283,7 @@ export default function SkillsSection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {filteredSkills.map((skill, index) => {
             const Icon = iconComponents[skill.icon] || Code;
             const logos = cardLogos[skill.name] || [];
@@ -281,16 +296,16 @@ export default function SkillsSection() {
               >
                 <div className="skills-card-topline" />
                 <div className="skills-card-halo" aria-hidden="true" />
-                <div className="mb-5 flex items-start justify-between gap-4">
-                  <div className="flex min-w-0 items-center gap-3.5">
+                <div className="mb-4 flex items-start justify-between gap-2.5">
+                  <div className="flex min-w-0 items-center gap-2.5">
                     <div className="skills-card-icon">
-                      <Icon size={20} />
+                      <Icon size={17} />
                     </div>
                     <div className="min-w-0">
                       <span className="mb-1 block font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500">
                         {skillsData.categories.find((category) => category.id === skill.category)?.label}
                       </span>
-                      <h3 className="truncate text-base font-bold text-white transition-colors group-hover:text-cyan-200">
+                      <h3 className="truncate text-sm font-bold text-white transition-colors group-hover:text-cyan-200">
                         {skill.name}
                       </h3>
                     </div>
@@ -298,12 +313,12 @@ export default function SkillsSection() {
                   <span className="skills-level">{skill.level}%</span>
                 </div>
 
-                <p className="relative z-[1] min-h-[42px] text-xs leading-5 text-slate-400 sm:text-[13px]">
+                <p className="relative z-[1] min-h-[48px] text-[11px] leading-[1.15rem] text-slate-400">
                   {skill.desc}
                 </p>
 
-                <div className="relative z-[1] mt-5 flex min-h-9 items-center justify-between gap-3 border-t border-white/[0.07] pt-4">
-                  <div className="flex items-center gap-2">
+                <div className="relative z-[1] mt-4 flex min-h-8 items-center justify-between gap-2 border-t border-white/[0.07] pt-3">
+                  <div className="flex items-center gap-1.5">
                     {logos.length > 0 ? logos.map((image) => (
                       <span className="skills-card-logo" key={image}>
                         <SkillLogo image={image} name={image.replace('.png', '')} />
@@ -318,7 +333,7 @@ export default function SkillsSection() {
                     {String(index + 1).padStart(2, '0')} <span className="text-slate-700">/</span> {String(filteredSkills.length).padStart(2, '0')}
                   </span>
                 </div>
-                <div className="skills-meter mt-4" role="img" aria-label={`${skill.level}% proficiency`}>
+                <div className="skills-meter mt-3" role="img" aria-label={`${skill.level}% proficiency`}>
                   <span style={{ '--meter-level': `${skill.level}%` }} />
                 </div>
               </article>

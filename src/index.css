@@ -363,11 +363,11 @@ html[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
   position: relative;
   overflow: hidden;
   border: 1px solid rgb(255 255 255 / 8%);
-  border-radius: 1.35rem;
+  border-radius: 1.1rem;
   background:
     radial-gradient(ellipse at 100% 0%, rgb(56 189 248 / 5%), transparent 50%),
     linear-gradient(145deg, rgb(15 23 42 / 78%), rgb(8 13 25 / 88%));
-  padding: 1.35rem;
+  padding: 1rem;
   box-shadow: inset 0 1px rgb(255 255 255 / 3%), 0 10px 30px rgb(0 0 0 / 10%);
   animation: skills-card-enter 440ms both;
   animation-delay: var(--skill-delay, 0ms);
@@ -398,12 +398,12 @@ html[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
 
 .skills-card-icon {
   display: grid;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2rem;
+  height: 2rem;
   flex: 0 0 auto;
   place-items: center;
   border: 1px solid rgb(103 232 249 / 14%);
-  border-radius: 0.9rem;
+  border-radius: 0.7rem;
   background: rgb(103 232 249 / 7%);
   color: #67e8f9;
   transition: transform 220ms ease, background-color 220ms ease;
@@ -418,17 +418,17 @@ html[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
   border: 1px solid rgb(34 211 238 / 16%);
   border-radius: 9999px;
   background: rgb(34 211 238 / 7%);
-  padding: 0.35rem 0.55rem;
+  padding: 0.25rem 0.4rem;
   color: #67e8f9;
   font-family: "Fira Code", "JetBrains Mono", monospace;
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   font-weight: 700;
 }
 
 .skills-card-logo {
   display: grid;
-  width: 2rem;
-  height: 2rem;
+  width: 1.65rem;
+  height: 1.65rem;
   place-items: center;
   overflow: hidden;
   border: 1px solid rgb(255 255 255 / 8%);
@@ -758,6 +758,218 @@ html[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
 
 .skills-heading > div:first-child > .skills-reveal:nth-child(4) {
   transition-delay: 220ms;
+}
+
+.skills-orbit-wrap {
+  display: grid;
+  justify-items: center;
+  gap: 1.15rem;
+  padding: 0.5rem 0;
+}
+
+.skills-orbit-scene {
+  position: relative;
+  width: min(100%, 29rem);
+  aspect-ratio: 1;
+  container-type: inline-size;
+  isolation: isolate;
+}
+
+.skills-orbit-glow,
+.skills-portrait-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.skills-orbit-glow {
+  z-index: -1;
+  width: 76%;
+  aspect-ratio: 1;
+  background: conic-gradient(from 25deg, rgb(34 211 238 / 18%), rgb(129 140 248 / 22%), rgb(16 185 129 / 16%), rgb(34 211 238 / 18%));
+  filter: blur(55px);
+  animation: skills-orbit-glow-turn 18s linear infinite;
+}
+
+.skills-orbit {
+  --orbit-color: rgb(103 232 249 / 36%);
+  --orbit-size: 94%;
+  --orbit-duration: 38s;
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: skills-orbit-spin var(--orbit-duration) linear infinite;
+}
+
+.skills-orbit-scene-filtered .skills-orbit {
+  --orbit-size: 74%;
+  --orbit-duration: 30s;
+}
+
+.skills-orbit::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--orbit-size);
+  aspect-ratio: 1;
+  border: 1px solid var(--orbit-color);
+  border-radius: 50%;
+  content: "";
+  opacity: 0.55;
+  transform: translate(-50%, -50%) scaleY(0.82) rotate(-12deg);
+}
+
+.skills-orbit-languages {
+  --orbit-color: rgb(103 232 249 / 34%);
+  --orbit-size: 94%;
+  --orbit-duration: 42s;
+}
+
+.skills-orbit-frontend {
+  --orbit-color: rgb(167 139 250 / 36%);
+  --orbit-size: 78%;
+  --orbit-duration: 34s;
+  animation-direction: reverse;
+}
+
+.skills-orbit-backend {
+  --orbit-color: rgb(251 191 36 / 34%);
+  --orbit-size: 62%;
+  --orbit-duration: 27s;
+}
+
+.skills-orbit-ai {
+  --orbit-color: rgb(52 211 153 / 36%);
+  --orbit-size: 46%;
+  --orbit-duration: 21s;
+  animation-direction: reverse;
+}
+
+.skills-orbit-frontend .skills-orbit-logo-tile,
+.skills-orbit-ai .skills-orbit-logo-tile {
+  animation-direction: normal;
+}
+
+.skills-orbit-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  transform:
+    rotate(var(--orbit-angle))
+    translateX(var(--orbit-radius))
+    rotate(calc(var(--orbit-angle) * -1));
+}
+
+.skills-orbit-logo-tile {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 24%);
+  border-radius: 0.9rem;
+  background: #fff;
+  padding: 0.42rem;
+  box-shadow: 0 8px 26px rgb(0 0 0 / 28%), 0 0 22px var(--orbit-color);
+  animation: skills-orbit-counterspin var(--orbit-duration) linear infinite reverse;
+}
+
+.skills-orbit-logo-tile .skills-logo {
+  border-radius: 0.35rem;
+}
+
+.skills-portrait-halo {
+  z-index: -1;
+  width: 39%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgb(34 211 238 / 32%), rgb(99 102 241 / 13%) 52%, transparent 72%);
+  filter: blur(20px);
+}
+
+.skills-portrait {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 34%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 2px solid rgb(165 243 252 / 78%);
+  border-radius: 50%;
+  background: #0f172a;
+  padding: 0.28rem;
+  box-shadow: 0 0 0 7px rgb(34 211 238 / 7%), 0 18px 55px rgb(0 0 0 / 45%);
+  transform: translate(-50%, -50%);
+}
+
+.skills-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.skills-portrait-caption {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgb(148 163 184 / 18%);
+  border-radius: 9999px;
+  background: rgb(8 13 25 / 88%);
+  padding: 0.42rem 0.75rem;
+  color: #e2e8f0;
+  font-size: 0.64rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
+  backdrop-filter: blur(12px);
+  transform: translateX(-50%);
+}
+
+.skills-orbit-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem 1rem;
+}
+
+.skills-orbit-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #94a3b8;
+  font-size: 0.62rem;
+  white-space: nowrap;
+}
+
+.skills-orbit-legend-dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: #67e8f9;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.skills-orbit-legend-frontend .skills-orbit-legend-dot {
+  background: #a78bfa;
+}
+
+.skills-orbit-legend-backend .skills-orbit-legend-dot {
+  background: #fbbf24;
+}
+
+.skills-orbit-legend-ai .skills-orbit-legend-dot {
+  background: #34d399;
 }
 
 .skills-console-wrap {
@@ -1128,6 +1340,12 @@ html[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(145deg, #172033, #0b1220);
 }
 
+.light-theme .skills-portrait-caption {
+  border-color: rgb(71 85 105 / 18%);
+  background: rgb(15 23 42 / 92%);
+  color: #f8fafc;
+}
+
 .light-theme .skills-float-chip {
   border-color: rgb(71 85 105 / 16%);
   background: rgb(255 255 255 / 94%);
@@ -1171,6 +1389,27 @@ html[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
 @keyframes skills-glow-turn {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes skills-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes skills-orbit-counterspin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes skills-orbit-glow-turn {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
@@ -1234,11 +1473,14 @@ html[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
   .skills-orb,
   .skills-status-dot,
   .skills-console-glow,
+  .skills-orbit-glow,
+  .skills-orbit,
   .skills-console-code p,
   .console-caret,
   .skills-float-chip,
   .skills-marquee-track,
   .skills-logo-frame,
+  .skills-orbit-logo-tile,
   .workbench-tool-logo,
   .skills-meter span {
     animation: none !important;
@@ -1273,6 +1515,23 @@ html[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
 }
 
 @media (max-width: 640px) {
+  .skills-orbit-wrap {
+    gap: 0.8rem;
+  }
+
+  .skills-orbit-logo {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .skills-orbit-logo-tile {
+    padding: 0.34rem;
+  }
+
+  .skills-portrait-caption {
+    bottom: 5%;
+  }
+
   .skills-console-wrap {
     padding: 1rem 0 1.35rem;
   }

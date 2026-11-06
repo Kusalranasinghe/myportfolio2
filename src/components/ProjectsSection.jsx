@@ -162,6 +162,18 @@ export default function ProjectsSection() {
                   </button>
 
                   <div className="flex items-center gap-2">
+                    {project.liveUrl && project.liveUrl !== '#' && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-cyan-300 border border-white/10 transition-colors"
+                        title={`Visit ${project.title} live website`}
+                        aria-label={`Visit ${project.title} live website`}
+                      >
+                        <ExternalLink size={16} />
+                      </a>
+                    )}
                     <a
                       href={project.githubUrl}
                       target="_blank"
@@ -269,15 +281,29 @@ export default function ProjectsSection() {
 
             {/* Action buttons */}
             <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-              <a
-                href={selectedProject.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs text-white bg-white/10 hover:bg-white/15 border border-white/15 transition-all"
-              >
-                <Github size={16} />
-                <span>View on GitHub</span>
-              </a>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={selectedProject.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs text-white bg-white/10 hover:bg-white/15 border border-white/15 transition-all"
+                >
+                  <Github size={16} />
+                  <span>View on GitHub</span>
+                </a>
+
+                {selectedProject.liveUrl && selectedProject.liveUrl !== '#' && (
+                  <a
+                    href={selectedProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs text-white bg-white/10 hover:bg-white/15 border border-white/15 transition-all"
+                  >
+                    <ExternalLink size={16} />
+                    <span>Visit Live Website</span>
+                  </a>
+                )}
+              </div>
 
               <a
                 href={`https://wa.me/${personalInfo.whatsappNumber}?text=Hi%20Kusal,%20I%20would%20love%20to%20learn%20more%20about%20your%20project:%20${encodeURIComponent(selectedProject.title)}`}

@@ -116,7 +116,7 @@ export default function ProjectsSection() {
                 <h3 className="text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors relative z-10">
                   {project.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-300 mt-1 relative z-10">
+                <p className="project-image-tagline text-xs sm:text-sm text-slate-300 mt-1 relative z-10">
                   {project.tagline}
                 </p>
               </div>

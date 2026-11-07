@@ -226,6 +226,10 @@ html[data-theme='light'] body {
   color: #ffffff !important;
 }
 
+.light-theme #projects .project-image-tagline {
+  color: #e2e8f0 !important;
+}
+
 .light-theme .bg-grid-pattern {
   opacity: 0.28;
 }

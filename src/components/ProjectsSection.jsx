@@ -11,9 +11,10 @@ import {
   ShieldAlert,
   Fuel,
   Film,
-  Rocket
+  Rocket,
+  Mail
 } from 'lucide-react';
-import { projectsData, personalInfo } from '../data/portfolioData';
+import { projectsData, personalInfo, startupData } from '../data/portfolioData';
 
 export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -157,7 +158,7 @@ export default function ProjectsSection() {
                     onClick={() => setSelectedProject(project)}
                     className="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
                   >
-                    <span>View Architecture & Details</span>
+                    <span>{project.type === 'organization' ? 'View Organization Details' : 'View Architecture & Details'}</span>
                     <ArrowRight size={14} />
                   </button>
 
@@ -237,35 +238,63 @@ export default function ProjectsSection() {
               {selectedProject.description}
             </p>
 
-            {/* Real World Impact */}
-            <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/30 mb-6">
-              <div className="text-xs font-mono text-emerald-400 uppercase tracking-wider font-semibold">
-                Real-World Impact
-              </div>
-              <p className="text-xs sm:text-sm text-slate-200 mt-1">
-                {selectedProject.impact}
+            {selectedProject.type === 'organization' && (
+              <p className="text-xs sm:text-sm text-slate-400 mb-6">
+                {startupData.role} · {startupData.founded}
               </p>
-            </div>
+            )}
+
+            {selectedProject.type === 'organization' && (
+              <div className="grid grid-cols-3 gap-3 mb-6">
+                {startupData.stats.map((stat) => (
+                  <div key={stat.label} className="rounded-xl bg-emerald-950/40 border border-emerald-500/30 p-3">
+                    <div className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider">{stat.label}</div>
+                    <div className="text-xs sm:text-sm font-semibold text-slate-200 mt-1">{stat.value}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+            {selectedProject.impact && (
+              <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/30 mb-6">
+                <div className="text-xs font-mono text-emerald-400 uppercase tracking-wider font-semibold">
+                  Real-World Impact
+                </div>
+                <p className="text-xs sm:text-sm text-slate-200 mt-1">
+                  {selectedProject.impact}
+                </p>
+              </div>
+            )}
 
             {/* Complete Key Features */}
             <div className="mb-6">
               <h4 className="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3">
-                Core Architectural Capabilities:
+                {selectedProject.type === 'organization' ? 'Services & Capabilities:' : 'Core Architectural Capabilities:'}
               </h4>
-              <div className="space-y-2.5">
-                {selectedProject.keyFeatures.map((feat, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
-                    <CheckCircle2 size={16} className="text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <span>{feat}</span>
-                  </div>
-                ))}
-              </div>
+              {selectedProject.type === 'organization' ? (
+                <div className="space-y-3">
+                  {startupData.services.map((service) => (
+                    <div key={service.title} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                      <CheckCircle2 size={16} className="text-cyan-400 flex-shrink-0 mt-0.5" />
+                      <span><strong className="text-slate-200">{service.title}:</strong> {service.desc}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="space-y-2.5">
+                  {selectedProject.keyFeatures.map((feat, i) => (
+                    <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                      <CheckCircle2 size={16} className="text-cyan-400 flex-shrink-0 mt-0.5" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Tech Stack Breakdown */}
             <div className="mb-6">
               <h4 className="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3">
-                Technologies Used:
+                {selectedProject.type === 'organization' ? 'Tools & Workflows:' : 'Technologies Used:'}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {selectedProject.techStack.map((tech, i) => (
@@ -282,6 +311,15 @@ export default function ProjectsSection() {
             {/* Action buttons */}
             <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
               <div className="flex flex-wrap gap-3">
+                {selectedProject.type === 'organization' && (
+                  <a
+                    href={`mailto:${startupData.email}`}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs text-white bg-white/10 hover:bg-white/15 border border-white/15 transition-all"
+                  >
+                    <Mail size={16} />
+                    <span>Email Kubi Forge</span>
+                  </a>
+                )}
                 <a
                   href={selectedProject.githubUrl}
                   target="_blank"
@@ -306,12 +344,12 @@ export default function ProjectsSection() {
               </div>
 
               <a
-                href={`https://wa.me/${personalInfo.whatsappNumber}?text=Hi%20Kusal,%20I%20would%20love%20to%20learn%20more%20about%20your%20project:%20${encodeURIComponent(selectedProject.title)}`}
+                href={`https://wa.me/${personalInfo.whatsappNumber}?text=${encodeURIComponent(selectedProject.type === 'organization' ? 'Hi Kusal, I would love to learn more about Kubi Forge.' : `Hi Kusal, I would love to learn more about your project: ${selectedProject.title}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs text-slate-950 bg-gradient-to-r from-cyan-400 to-sky-400 hover:from-cyan-300 hover:to-sky-300 shadow-md shadow-cyan-500/20 transition-all"
               >
-                <span>Discuss System Architecture</span>
+                <span>{selectedProject.type === 'organization' ? 'Contact Kubi Forge' : 'Discuss System Architecture'}</span>
                 <ArrowRight size={14} />
               </a>
             </div>

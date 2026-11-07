@@ -182,8 +182,8 @@ export const projectsData = [
     tagline: "Smart fuel queue management and station quota optimization platform",
     category: "Enterprise System",
     featured: true,
-    image: "/assets/projects/fuelgo.jpg",
-    imageAlt: "FuelGo digital fuel management dashboard with QR pass and station network",
+    image: "/assets/projects/fuelgo.png",
+    imageAlt: "FuelGo digital fuel management platform with QR pass, quota tracking, and station network",
     imageBg: "from-amber-900/60 to-orange-900/40",
     badge: "Smart Logistics",
     tags: ["Java", "Spring Boot", "Vanilla JavaScript", "HTML", "CSS"],
@@ -205,6 +205,8 @@ export const projectsData = [
     tagline: "Website for the Cinero-26 Inter-University Short Film Competition",
     category: "Inter-University Short Film Competition",
     featured: true,
+    image: "/assets/projects/cinero.png",
+    imageAlt: "Cinero-26 short film festival website displayed across laptop and mobile devices",
     imageBg: "from-purple-900/60 to-pink-900/40",
     badge: "Short Film Competition",
     tags: ["TypeScript", "React 19", "CSS", "JavaScript", "HTML"],
@@ -221,23 +223,21 @@ export const projectsData = [
   },
   {
     id: "kubi-forge-core",
-    title: "Kubi Forge Digital Ecosystem",
-    tagline: "The official technology & software venture launchpad",
-    category: "Startup Platform",
+    type: "organization",
+    title: startupData.name,
+    tagline: startupData.tagline,
+    category: "Startup Organization",
     featured: false,
+    image: "/assets/projects/kubi-forge.png",
+    imageAlt: "Kubi Forge co-founders and digital platform showcase",
     imageBg: "from-emerald-900/60 to-teal-900/40",
     badge: "Venture Core",
-    tags: ["Fullstack", "React", "Cloud Architecture", "Branding", "UI/UX"],
-    description: "The core digital infrastructure powering Kubi Forge, facilitating software client onboardings, agile project showcase displays, and tech consulting pipelines with integrated AI workflows.",
-    keyFeatures: [
-      "Showcase of modern digital products developed under the Kubi Forge brand",
-      "Client inquiry tracking and automated project scope estimation tool",
-      "High performance, SEO-optimized responsive web architecture"
-    ],
-    techStack: ["React", "Tailwind CSS", "Serverless / Node", "Figma"],
+    tags: startupData.services.map(service => service.title),
+    description: startupData.description,
+    keyFeatures: startupData.services.map(service => service.title),
+    techStack: ["React", "Java Spring Boot", "RESTful APIs", "Relational Databases", "Figma", "Gemini", "Claude", "ChatGPT"],
     githubUrl: startupData.githubUrl,
-    liveUrl: startupData.liveUrl,
-    impact: "Serves as the launchpad for innovative software projects created by Kusal and collaborators."
+    liveUrl: startupData.liveUrl
   }
 ];
 
@@ -246,7 +246,7 @@ export const terminalCommands = {
   about: "Kusal Ranasinghe - Undergraduate at University of Sri Jayewardenepura (USJ) studying Computer Science, Mathematics, & Physics. Co-Founder of Kubi Forge.",
   edu: "1. BSc Computer Science - University of Sri Jayewardenepura (2025 - Present)\n2. Ananda Sastralaya Mathugama (Grade 6-13, O/L & A/L)\n3. Kalutara Gnanodaya College (Grade 1-5)",
   skills: "Languages: Java, JavaScript, Python, C, C#, PHP, SQL\nFrontend: React, HTML5, CSS3, Tailwind CSS\nBackend: Spring Boot, REST APIs, MySQL\nDesign: Figma (UI/UX)\nAI Tools: Claude, ChatGPT, Gemini, Prompt Engineering",
-  projects: "1. Flood Relief Support Center (Emergency logistics & crisis coordination)\n2. FuelGo (Smart fuel queue & quota management system)\n3. Cineru-26 (Cinematic booking and media platform)\n4. Kubi Forge Platform (Startup technology suite)",
+  projects: "1. Flood Relief Support Center (Emergency logistics & crisis coordination)\n2. FuelGo (Smart fuel queue & quota management system)\n3. Cinero-26 (Inter-university short film competition website)",
   startup: "Kubi Forge - A software venture founded by Kusal Ranasinghe dedicated to building robust digital solutions, enterprise web apps, and AI-accelerated products.",
   contact: "Email: dananjayakusal39@gmail.com\nWhatsApp: +94 78 799 6831 (0787996831)\nLocation: Sri Lanka\nLinkedIn: https://www.linkedin.com/in/kusal-ranasinghe",
   "sudo hire": "🎉 ACCESS GRANTED! You have discovered the easter egg! Kusal is ready for your team. Click the 'Hire Me' or WhatsApp button to get in touch right away!",

@@ -99,7 +99,7 @@ export default function ProjectsSection() {
                       decoding="async"
                     />
                     <div className="absolute inset-0 -z-10 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/10" />
-                    <div className="absolute inset-0 -z-10 bg-slate-950/10 transition-colors duration-300 group-hover:bg-slate-950/0" />
+                    <div className="project-image-overlay absolute inset-0 -z-10 bg-slate-950/10 transition-colors duration-300 group-hover:bg-slate-950/0" />
                   </>
                 )}
                 <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full blur-2xl pointer-events-none" />

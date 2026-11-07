@@ -95,7 +95,7 @@ html[data-theme='light'] body {
 }
 
 .light-theme [class*="bg-[#"],
-.light-theme [class*="bg-slate-950"],
+.light-theme [class*="bg-slate-950"]:not(.project-image-overlay),
 .light-theme [class*="bg-slate-900"] {
   background-color: var(--light-surface) !important;
 }
